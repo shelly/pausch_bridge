@@ -10,7 +10,6 @@ while(idx < 60):
 	rig.select("$side=bot[$panel=" + str(idx) + "]").setRGBRaw(0, 0, 1)
 	rig.updateOnce()
 	time.sleep(0.2)
-	# rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(0, 0, 0)
 	idx = idx + 1
 
 idx = 0
@@ -19,7 +18,6 @@ while(idx < 60):
         rig.select("$side=bot[$panel=" + str(idx) + "]").setRGBRaw(0, 0, 0.5)
         rig.updateOnce()
         time.sleep(0.2)
-        # rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(0, 0, 0)
         idx = idx + 1
 
 
