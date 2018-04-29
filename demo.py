@@ -4,7 +4,20 @@ import time
 rig = L.Rig("/home/teacher/Lumiverse/PBridge.rig.json")
 rig.init()
 
-def updateText(text, text2, color):
+sent = ""
+sent2 = ""
+
+# loc: top or bot
+def updateText(loc, text, color):
+	if not (loc == "top" or loc == "bottom"):
+		print "not valid loc"
+		return
+
+	if loc == "top":
+		sent = text
+	else:
+		sent2 = text
+		
 	sent = text + ((60 - len(text)) * " ")
 	sent2 = text2 + ((60 - len(text2)) * " ")
 	print ("sent is " + str(len(sent)) + ", sent2 is " + str(len(sent2)))
