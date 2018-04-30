@@ -6,8 +6,8 @@ rig.init()
 
 sent = "hi hi hi hi hi hi hi hi hi hi"
 sent2 = "hello hello hello hello hello"
-color = (209, 91, 252)
-color2 = (252, 91, 123)
+color = (0.82, 0.45, 0.98)
+color2 = (1,.7,.11)
 
 # loc: top or bot
 def updateText(loc, text, c):
@@ -31,7 +31,7 @@ def updateText(loc, text, c):
     idx = 0
     while(idx < 60):
         if (idx < len(s1) and s1[idx] != " "):
-            rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(0.5, 0, 0)
+            rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(color[0], color[1], color[2])
             rig.updateOnce()
             time.sleep(0.1)
         idx = idx + 1
@@ -40,7 +40,7 @@ def updateText(loc, text, c):
     idx = 0
     while(idx < 60):
         if (idx < len(s2) and s2[idx] != " "):
-            rig.select("$side=bot[$panel=" + str(60-idx) + "]").setRGBRaw(0, 0, 1)
+            rig.select("$side=bot[$panel=" + str(60-idx) + "]").setRGBRaw(color2[0], color2[1], color2[2])
             rig.updateOnce()
             time.sleep(0.2)
         idx = idx + 1
@@ -87,4 +87,4 @@ def updateText(loc, text, c):
     rig.updateOnce()
     time.sleep(0.2)
 
-updateText("top", "aaaa ooo aaaa ooo ooo aaaa a a a aa a", (209, 91, 252))
+updateText("top", "aaaa ooo aaaa ooo ooo aaaa a a a aa a", (0.82, 0.45, 0.98))
