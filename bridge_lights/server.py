@@ -1,9 +1,11 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
+import SocketServer
+from BaseHTTPServer import BaseHTTPRequestHandler
 
-def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
-    server_address = ('', 8000)
-    httpd = server_class(server_address, handler_class)
-    httpd.serve_forever()
+class MyHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("Get received!")
 
-if __name__ == '__main__':
-	run()
+        self.send_response(200)
+
+httpd = SocketServer.TCPServer(("", 8080), MyHandler)
+httpd.serve_forever()
