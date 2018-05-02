@@ -110,9 +110,9 @@ def playShow():
 
     rig.updateOnce()
     time.sleep(1)
-    
-    playShow()
 
+    playText(s1, s2, color, color2)
+    
 def updateText(text, c):
     print "UPDATING TEXT"
     global sent, sent2, color, color2
