@@ -8,28 +8,42 @@ class TextForm(forms.Form):
 	your_color = forms.CharField()
 
 	def submit_text(self): 
+		print("Submit text called.")
 		self.your_text = self.cleaned_data['your_text']
 		self.your_color = self.cleaned_data['your_color']
 
-		r, g, b = 252, 91, 123 
+		text = self.your_text 
+		color = self.your_color 
+		r, g, b = 0.5, 0.5, 0.5 
+		side = '' 
 
-		# if color == 'light_pink':
-		# 	r, g, b = 252, 91, 123
-		# elif color == 'orange':
-		# 	r, g, b = 252, 91, 123
-		# elif color == 'yellow':
-		# 	r, g, b = 252, 91, 123
-		# elif color == 'bright_pink':
-		# 	r, g, b = 252, 91, 123
-		# elif color == 'purple':
-		# 	r, g, b = 252, 91, 252 
-		# elif color == 'violet':
-		# 	r, g, b = 123, 91, 252
-		# elif color == 'blue':
-		# 	r, g, b = 41, 119, 255
-		# else: # teal 
-		# 	r, g, b = 62, 230, 242
-		url = 'http://192.168.1.13/trigger?var={0},{1},{2},{3}'.format(self.your_text, r, g, b)
-		print(url)
-		requests.get(url)
+		if color == 'light_pink':
+			r, g, b = .98,.35,.48
+			side = 'bot'
+		elif color == 'orange':
+			r, g, b = 1,.7,.11
+			side = 'bot'
+		elif color == 'yellow':
+			r, g, b = 0.8,.78,.1
+			side = 'bot'
+		elif color == 'bright_pink':
+			r, g, b = .98,.35,.73
+			side = 'bot'
+		elif color == 'purple':
+			r, g, b = 0.82, 0.45, 0.98
+			side = 'top' 
+		elif color == 'violet':
+			r, g, b = 0.48, 0.36, 0.9
+			side = 'top'
+		elif color == 'blue':
+			r, g, b = 0.06, 0.27, 0.8
+			side = 'top'
+		else: # teal 
+			r, g, b = 0.24, 0.9, 0.95
+			side = 'top'
+
+		print(text, color, r, g, b, side)
+		# do something with text, r, g, b, and side 
+
+
 

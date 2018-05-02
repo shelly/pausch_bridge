@@ -21,24 +21,29 @@
 	<div class="container">
 	  <div class="row">
 
-	    <div class="col-sm-6 text-center">
+	    <div class="col-sm-12 text-center">
 	    	
 	<form action="/form_submit" method="post">{% csrf_token %}
 	  <div class="form-group">
 	    <label class="mt-2" for="your_text">Your text:</label>
 	    <input name="your_text" class="mt-2 form-control" maxlength="60" required>
 	    <label class="mt-2" for="your_color">Your color:</label>
-	    <input name="your_color" class="mt-2 form-control" required>
+<!-- 
+	    <label class="radio-inline"><input type="radio" name="your_color" value="light_pink"> Light pink </label>
+	    <label class="radio-inline"><input type="radio" name="your_color" value="orange"> Orange </label>
+	    <label class="radio-inline"><input type="radio" name="your_color" value="yellow"> Yellow </label>
+	    <label class="radio-inline"><input type="radio" name="your_color" value="bright_pink"> Fuschia </label>
+ -->
+	    <label class="radio-inline"><input type="radio" name="your_color" value="purple"> Purple </label>
+	    <label class="radio-inline"><input type="radio" name="your_color" value="violet"> Violet </label>
+	    <label class="radio-inline"><input type="radio" name="your_color" value="blue"> Blue </label>
+	    <label class="radio-inline"><input type="radio" name="your_color" value="teal"> Teal </label>
 
 	  </div>
 
 	  <button type="submit" class="mt-2 btn btn-default">Submit</button>
 	</form>
 
-	    </div>
-
-	    <div class="col-sm-6 text-center">
-	    	Second column.
 	    </div>
 
 	  </div>
