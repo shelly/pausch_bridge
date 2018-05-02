@@ -16,7 +16,7 @@ def playText(s1, s2, color, color2):
         if (idx < len(s1) and s1[idx] != " "):
             rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(color[0], color[1], color[2])
             rig.updateOnce()
-            time.sleep(0.1)
+            time.sleep(0.2)
         idx = idx + 1
 
     # play animation of text from purnell
@@ -25,9 +25,9 @@ def playText(s1, s2, color, color2):
         if (idx < len(s2) and s2[idx] != " "):
             rig.select("$side=bot[$panel=" + str(60-idx) + "]").setRGBRaw(color2[0], color2[1], color2[2])
             rig.updateOnce()
-            time.sleep(0.2)
+            time.sleep(0.3)
         idx = idx + 1
-    time.sleep(2)
+    time.sleep(3)
 
 # loc: top or bot
 def updateText(loc, text, c):
@@ -91,8 +91,10 @@ def updateText(loc, text, c):
         idx = idx + 1
 
     rig.updateOnce()
-    time.sleep(0.1)
+    time.sleep(1)
 
-    playText(s1, s2, color, color2)
+def playShow():
+    while (1):
+        updateText("top", "aaaa ooo aaaa ooo ooo aaaa a a a aa a", (0.82, 0.45, 0.98))
 
-updateText("top", "aaaa ooo aaaa ooo ooo aaaa a a a aa a", (0.82, 0.45, 0.98))
+playShow()
