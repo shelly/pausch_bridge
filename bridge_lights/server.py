@@ -1,11 +1,18 @@
-import SocketServer
-from BaseHTTPServer import BaseHTTPRequestHandler
+import socketio
+import eventlet
+import events 
 
-class MyHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        print("Get received!")
+sio = socketio.Server()
 
-        self.send_response(200)
+@sio.on('connection')
+def connect(sio, env):
+	print("Connected")
 
-httpd = SocketServer.TCPServer(("", 8080), MyHandler)
-httpd.serve_forever()
+@sio.on('message')
+def message(sid, data):
+	print("Received message", data) 
+
+
+if __name__ == '__main__':
+    app = socketio.Middleware(sio, app)
+    eventlet.wsgi.server(eventlet.listen(('', 8000)), app)
