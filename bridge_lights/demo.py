@@ -49,28 +49,28 @@ def updateText(loc, text, c):
 
     playText(s1, s2, color, color2)
 
-    # # fade out
-    # idx = 0
-    # idx2 = 5
-    # while(idx2 >= 0):
-    #     while (idx < 60):
-    #         if (idx < len(s1) and s1[idx] != " "):
-    #             rig.select("$side=top[$panel=" + str(idx) + "]").setIntensity(idx2 * 0.2)
-    #         if (idx < len(s2) and s2[idx] != " "):
-    #             rig.select("$side=bot[$panel=" + str(60-idx) + "]").setIntensity(idx2 * 0.2)
-    #         idx = idx + 1
-    #     rig.updateOnce()
-    #     time.sleep(0.1)
-    #     idx2 = idx2 - 1
-
-    # turn everything off
+    # fade out
     idx = 0
-    while (idx < 60):
-      rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
-      rig.select("$side=bot[$panel=" + str(60-idx) + "]").setRGBRaw(0, 0, 0)
-      idx = idx + 1
-    rig.updateOnce()
-    time.sleep(0.1)
+    idx2 = 5
+    while(idx2 >= 0):
+        while (idx < 60):
+            if (idx < len(s1) and s1[idx] != " "):
+                rig.select("$side=top[$panel=" + str(idx+1) + "]").setIntensity(idx2 * 20)
+            if (idx < len(s2) and s2[idx] != " "):
+                rig.select("$side=bot[$panel=" + str(60-idx) + "]").setIntensity(idx2 * 20)
+            idx = idx + 1
+        rig.updateOnce()
+        time.sleep(0.2)
+        idx2 = idx2 - 1
+
+    # # turn everything off
+    # idx = 0
+    # while (idx < 60):
+    #   rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
+    #   rig.select("$side=bot[$panel=" + str(60-idx) + "]").setRGBRaw(0, 0, 0)
+    #   idx = idx + 1
+    # rig.updateOnce()
+    # time.sleep(0.1)
 
     # turn space spots white
     idx = 0
