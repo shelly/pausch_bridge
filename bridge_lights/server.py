@@ -4,7 +4,7 @@ import events
 
 sio = socketio.Server()
 
-@sio.on('connect')
+@sio.on('connection')
 def connect(sio, env):
 	print("Connected")
 
