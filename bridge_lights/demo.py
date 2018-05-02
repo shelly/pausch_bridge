@@ -61,6 +61,7 @@ def getColor(color):
     return c, side
 
 def updateText(text, c):
+    print "UPDATING TEXT"
     global sent, sent2, color, color2
 
     co, side = getColor(c)
@@ -124,4 +125,3 @@ def playShow():
         rig.updateOnce()
         time.sleep(1)
 
-playShow()
