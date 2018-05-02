@@ -65,6 +65,7 @@ def turnAllOff():
         rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
         rig.select("$side=bot[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
         idx = idx + 1
+    rig.updateOnce()
 
 def playShow():       
     s1 = sent + ((60 - len(sent)) * " ")
@@ -134,4 +135,5 @@ def updateText(text, c):
         sent2 = text
         color2 = co
 
+    turnAllOff()
     playShow()
