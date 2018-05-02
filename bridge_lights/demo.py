@@ -5,7 +5,7 @@ rig = L.Rig("/home/teacher/Lumiverse/PBridge.rig.json")
 rig.init()
 
 sent = "hi hi hi hi hi hi hi hi hi hi"
-sent2 = "hello hello hello hello hello"
+sent2 = "hello hello hello hello hello ooo oooo"
 color = (0.82, 0.45, 0.98)
 color2 = (1,.7,.11)
 
@@ -49,28 +49,28 @@ def updateText(loc, text, c):
 
     playText(s1, s2, color, color2)
 
-    # fade out
-    idx = 0
-    idx2 = 5
-    while(idx2 >= 0):
-        while (idx < 60):
-            if (idx < len(s1) and s1[idx] != " "):
-                rig.select("$side=top[$panel=" + str(idx) + "]").setIntensity(idx2 * 0.2)
-            if (idx < len(s2) and s2[idx] != " "):
-                rig.select("$side=bot[$panel=" + str(60-idx) + "]").setIntensity(idx2 * 0.2)
-            idx = idx + 1
-        rig.updateOnce()
-        time.sleep(0.1)
-        idx2 = idx2 - 1
-
-    # # turn everything off
+    # # fade out
     # idx = 0
-    # while (idx < 60):
-    #   rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(0, 0, 0)
-    #   rig.select("$side=bot[$panel=" + str(60-idx) + "]").setRGBRaw(0, 0, 0)
-    #   idx = idx + 1
-    # rig.updateOnce()
-    # time.sleep(0.3)
+    # idx2 = 5
+    # while(idx2 >= 0):
+    #     while (idx < 60):
+    #         if (idx < len(s1) and s1[idx] != " "):
+    #             rig.select("$side=top[$panel=" + str(idx) + "]").setIntensity(idx2 * 0.2)
+    #         if (idx < len(s2) and s2[idx] != " "):
+    #             rig.select("$side=bot[$panel=" + str(60-idx) + "]").setIntensity(idx2 * 0.2)
+    #         idx = idx + 1
+    #     rig.updateOnce()
+    #     time.sleep(0.1)
+    #     idx2 = idx2 - 1
+
+    # turn everything off
+    idx = 0
+    while (idx < 60):
+      rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(0, 0, 0)
+      rig.select("$side=bot[$panel=" + str(60-idx) + "]").setRGBRaw(0, 0, 0)
+      idx = idx + 1
+    rig.updateOnce()
+    time.sleep(0.3)
 
     # turn space spots white
     idx = 0
