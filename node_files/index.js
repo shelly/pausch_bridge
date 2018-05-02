@@ -8,7 +8,7 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   socket.on('message', function(text, color){
-  	io.emit('message', text, color);
+  	io.emit('message', {'text': text, 'color': color});
   });
 });
 

@@ -17,12 +17,12 @@
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
   $(function () {
-    var socket = io();
+    var socket = io('http://pbridge.adm.cs.cmu.edu:8000');
     $('form').submit(function(){
-      socket.emit('message', $('#text').val(), $("input[name=your_color]:checked").val());
+      socket.emit('message', {'text': $('#text').val(), 'color': $("input[name=your_color]:checked").val()});
       return false;
     });
-    socket.on('message', function(text, color) {
+    socket.on('reply', function(text, color) {
     	$('#messages').append($('<li>').text(text));
     });
   });

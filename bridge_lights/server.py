@@ -6,12 +6,12 @@ sio = socketio.Server()
 
 @sio.on('connection')
 def connect(sio, env):
-	print("Connected")
+	pass 
 
 @sio.on('message')
 def message(sid, data):
-	print("Received message", data) 
 	updateText(data['text'], data['color'])
+	sio.emit('reply', data['text'], data['color'])
 
 
 if __name__ == '__main__':
