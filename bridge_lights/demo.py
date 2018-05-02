@@ -60,7 +60,61 @@ def getColor(color):
 
     return c, side
 
+def playShow():       
+    s1 = sent + ((60 - len(sent)) * " ")
+    s2 = sent2 + ((60 - len(sent2)) * " ")
+    print ("sent is " + str(len(s1)) + ", sent2 is " + str(len(s2)))
+
+    playText(s1, s2, color, color2)
+
+    # # fade out
+    # idx = 0
+    # idx2 = 5
+    # while(idx2 >= 0):
+    #     while (idx < 60):
+    #         if (idx < len(s1) and s1[idx] != " "):
+    #             rig.select("$side=top[$panel=" + str(idx+1) + "]").setIntensity(idx2 * 20)
+    #         if (idx < len(s2) and s2[idx] != " "):
+    #             rig.select("$side=bot[$panel=" + str(60-idx) + "]").setIntensity(idx2 * 20)
+    #         idx = idx + 1
+    #     rig.updateOnce()
+    #     time.sleep(0.2)
+    #     idx2 = idx2 - 1
+
+    # turn everything off
+    idx = 0
+    while (idx < 60):
+      rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
+      rig.select("$side=bot[$panel=" + str(60-idx) + "]").setRGBRaw(0, 0, 0)
+      idx = idx + 1
+    rig.updateOnce()
+    time.sleep(0.1)
+
+    # turn space spots white
+    idx = 0
+    while (idx < 60):
+        if (s1[idx] == " " and s2[59-idx] == " "):
+            rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(1, 1, 1)
+            rig.select("$side=bot[$panel=" + str(idx+1) + "]").setRGBRaw(1, 1, 1)
+        idx = idx + 1
+    rig.updateOnce()
+    time.sleep(3)
+
+    # turn off white
+    idx = 0
+    while (idx < 60):
+        if (s1[idx] == " " and s2[59-idx] == " "):
+            rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
+            rig.select("$side=bot[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
+        idx = idx + 1
+
+    rig.updateOnce()
+    time.sleep(1)
+    
+    playShow()
+
 def updateText(text, c):
+    print "UPDATING TEXT"
     global sent, sent2, color, color2
 
     co, side = getColor(c)
@@ -72,56 +126,4 @@ def updateText(text, c):
         sent2 = text
         color2 = co
 
-def playShow():
-    while (1):        
-        s1 = sent + ((60 - len(sent)) * " ")
-        s2 = sent2 + ((60 - len(sent2)) * " ")
-        print ("sent is " + str(len(s1)) + ", sent2 is " + str(len(s2)))
-
-        playText(s1, s2, color, color2)
-
-        # # fade out
-        # idx = 0
-        # idx2 = 5
-        # while(idx2 >= 0):
-        #     while (idx < 60):
-        #         if (idx < len(s1) and s1[idx] != " "):
-        #             rig.select("$side=top[$panel=" + str(idx+1) + "]").setIntensity(idx2 * 20)
-        #         if (idx < len(s2) and s2[idx] != " "):
-        #             rig.select("$side=bot[$panel=" + str(60-idx) + "]").setIntensity(idx2 * 20)
-        #         idx = idx + 1
-        #     rig.updateOnce()
-        #     time.sleep(0.2)
-        #     idx2 = idx2 - 1
-
-        # turn everything off
-        idx = 0
-        while (idx < 60):
-          rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
-          rig.select("$side=bot[$panel=" + str(60-idx) + "]").setRGBRaw(0, 0, 0)
-          idx = idx + 1
-        rig.updateOnce()
-        time.sleep(0.1)
-
-        # turn space spots white
-        idx = 0
-        while (idx < 60):
-            if (s1[idx] == " " and s2[59-idx] == " "):
-                rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(1, 1, 1)
-                rig.select("$side=bot[$panel=" + str(idx+1) + "]").setRGBRaw(1, 1, 1)
-            idx = idx + 1
-        rig.updateOnce()
-        time.sleep(3)
-
-        # turn off white
-        idx = 0
-        while (idx < 60):
-            if (s1[idx] == " " and s2[59-idx] == " "):
-                rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
-                rig.select("$side=bot[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
-            idx = idx + 1
-
-        rig.updateOnce()
-        time.sleep(1)
-
-playShow()
+    playShow()

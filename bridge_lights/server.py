@@ -6,12 +6,12 @@ sio = socketio.Server()
 
 @sio.on('connection')
 def connect(sio, env):
-	pass 
+	demo.playShow()
 
 @sio.on('message')
 def message(sid, data):
 	print("Text: ", data['text'], "Color: ", data['color'])
-	updateText(data['text'], data['color'])
+	demo.updateText(data['text'], data['color'])
 	sio.emit('reply', {data['text'], data['color']})
 
 
