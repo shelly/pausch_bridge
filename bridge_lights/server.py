@@ -10,8 +10,9 @@ def connect(sio, env):
 
 @sio.on('message')
 def message(sid, data):
+	print("Text: ", data['text'], "Color: ", data['color'])
 	updateText(data['text'], data['color'])
-	sio.emit('reply', data['text'], data['color'])
+	sio.emit('reply', {data['text'], data['color']})
 
 
 if __name__ == '__main__':

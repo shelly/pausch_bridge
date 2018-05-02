@@ -22,8 +22,9 @@
       socket.emit('message', {'text': $('#text').val(), 'color': $("input[name=your_color]:checked").val()});
       return false;
     });
-    socket.on('reply', function(text, color) {
-    	$('#messages').append($('<li>').text(text));
+    socket.on('reply', function(data) {
+    	console.log(data);
+    	// $('#messages').append($('<li>').text(text));
     });
   });
 </script>
