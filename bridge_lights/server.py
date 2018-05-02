@@ -1,6 +1,6 @@
 import socketio
 import eventlet
-import events 
+import demo
 
 sio = socketio.Server()
 
@@ -11,8 +11,9 @@ def connect(sio, env):
 @sio.on('message')
 def message(sid, data):
 	print("Received message", data) 
+	updateText(data['text'], data['color'])
 
 
 if __name__ == '__main__':
-    app = socketio.Middleware(sio, app)
+    app = socketio.Middleware(sio)
     eventlet.wsgi.server(eventlet.listen(('', 8000)), app)
