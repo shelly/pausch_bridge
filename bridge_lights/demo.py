@@ -60,6 +60,13 @@ def getColor(color):
 
     return c, side
 
+def turnAllOff():
+    while (idx < 60):
+        rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
+        rig.select("$side=bot[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
+        idx = idx + 1
+    rig.updateOnce()
+
 def playShow():       
     s1 = sent + ((60 - len(sent)) * " ")
     s2 = sent2 + ((60 - len(sent2)) * " ")
@@ -110,9 +117,11 @@ def playShow():
 
     rig.updateOnce()
     time.sleep(1)
-    
-    playShow()
 
+    playText(s1, s2, color, color2)
+
+    turnAllOff()
+    
 def updateText(text, c):
     print "UPDATING TEXT"
     global sent, sent2, color, color2
@@ -126,4 +135,5 @@ def updateText(text, c):
         sent2 = text
         color2 = co
 
+    turnAllOff()
     playShow()
