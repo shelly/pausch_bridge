@@ -14,7 +14,7 @@ def playText(s1, s2, color, color2):
     idx = 0
     while(idx < 60):
         if (idx < len(s1) and s1[idx] != " "):
-            rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(color[0], color[1], color[2])
+            rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(color[0], color[1], color[2])
             rig.updateOnce()
             time.sleep(0.1)
         idx = idx + 1
@@ -66,7 +66,7 @@ def updateText(loc, text, c):
     # turn everything off
     idx = 0
     while (idx < 60):
-      rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(0, 0, 0)
+      rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(0, 0, 0)
       rig.select("$side=bot[$panel=" + str(60-idx) + "]").setRGBRaw(0, 0, 0)
       idx = idx + 1
     rig.updateOnce()
@@ -74,19 +74,19 @@ def updateText(loc, text, c):
 
     # turn space spots white
     idx = 0
-    if (len(s1) + len(s2) < 60):
-        print "HERE"
-        idx2 = len(s1)
-        while (idx2 < 60 - len(s2)):
-            rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(1, 1, 1)
-            rig.select("$side=bot[$panel=" + str(idx) + "]").setRGBRaw(1, 1, 1)
-            idx2 = idx2 + 1
-    else:
-        while (idx < 60):
-            if (s1[idx] == " " and s2[59-idx] == " "):
-                rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(1, 1, 1)
-                rig.select("$side=bot[$panel=" + str(idx) + "]").setRGBRaw(1, 1, 1)
-            idx = idx + 1
+    # if (len(s1) + len(s2) < 60):
+    #     print "HERE"
+    #     idx2 = len(s1)
+    #     while (idx2 < 60 - len(s2)):
+    #         rig.select("$side=top[$panel=" + str(idx) + "]").setRGBRaw(1, 1, 1)
+    #         rig.select("$side=bot[$panel=" + str(idx) + "]").setRGBRaw(1, 1, 1)
+    #         idx2 = idx2 + 1
+    # else:
+    while (idx < 60):
+        if (s1[idx] == " " and s2[59-idx] == " "):
+            rig.select("$side=top[$panel=" + str(idx+1) + "]").setRGBRaw(1, 1, 1)
+            rig.select("$side=bot[$panel=" + str(idx+1) + "]").setRGBRaw(1, 1, 1)
+        idx = idx + 1
 
     rig.updateOnce()
     time.sleep(0.2)
