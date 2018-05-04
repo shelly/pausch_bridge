@@ -1,1 +1,14 @@
 CMU's Pausch Bridge Class: Group 1.
+Shelly Bensal, Ida Chow, Angela Qiu, and Miranda Ford.
+
+Cross-Campus Communication
+In the spirit of the Randy Pausch Bridge, our lighting design visually brings to life a conversation between the two sides of our campus. A computer in each of Gates and Purnell communicate with each other and the bridge through the written word. The lighting show works to represent the artistic and technical elements of our campus community coming together in collaboration. As one side speaks, the words of the other melt in and fill the gaps. Just as much importance is then given to the blank spaces of silence that the arts and tech do not fill even together, acknowledging the imperfectness of collaboration. As the conversation continues, so too does the bridge's show.
+
+To run the show:
+
+Log into the bridge server (pbridge.adm.cs.cmu.edu), and in the directory on_bridge, run "python server.py". The server is now running on the bridge.
+
+To run the client: 
+Navigate into the directory on_client. Initially, with Node installed, you'll need to type "npm install" to get all the app's dependencies. Once you're set up, type "node index.js" and go to "localhost:8000" in your browser to view and interact with the app. 
+
+We set up two clients on two separate computers using this process, one representing the Purnell side and one the Gates (make changes in index.html before running "node index.js" to change the side of the bridge you represent) and used these two computers to chat back and forth as the conversation was visualized on the bridge.

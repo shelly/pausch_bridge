@@ -1,6 +1,6 @@
 import socketio
 import eventlet
-import demo
+import bridge_lights
 
 sio = socketio.Server()
 
@@ -12,7 +12,7 @@ def connect(sio, env):
 def message(sid, data):
 	print("Text: ", data['text'], "Color: ", data['color'])
 	sio.emit('reply', {"text": data['text'], "color": data['color']})
-	demo.updateText(data['text'], data['color'])
+	bridge_lights.updateText(data['text'], data['color'])
 
 
 if __name__ == '__main__':
